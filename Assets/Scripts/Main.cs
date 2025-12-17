@@ -4,29 +4,34 @@ public class Main : MonoBehaviour
 {
     public static Main Instance { get; private set; }
 
+    public Test Test;
     public Map Map;
     public HUD HUD;
     public CameraMovement CameraMovement;
-
+    public float Money;
+    public int LinkCount;
     private PlayerMode _currentMode = PlayerMode.Normal;
-    private float _money = 14.0f;
-    private int _links;
 
     public PlayerMode Mode => _currentMode;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
+        Debug.Log("[Main] 게임 시작");
+
+        Test.OnStart();
         Map.Create();
         Map.CreateNodes();
-
         CameraMovement.SetPosition(Map.Center);
+        HUD.SetMoneyText(Money);
+        HUD.SetLinkCountText(LinkCount);
 
-        HUD.SetMoneyText(_money);
+        Debug.Log("[Main] 초기 자금: " + Money);
+        Debug.Log("[Main] 초기 링크 수: " + LinkCount);
     }
 
     public void SetMode(PlayerMode mode)
@@ -43,18 +48,18 @@ public class Main : MonoBehaviour
 
     public void SellResourceCargo(float price)
     {
-        _money += price;
-        HUD.SetMoneyText(_money);
+        Money += price;
+        HUD.SetMoneyText(Money);
     }
 
     public void BuyLink()
     {
-        if (_money >= 15)
+        if (Money >= 15)
         {
-            _money -= 15;
-            _links += 1;
-            HUD.SetMoneyText(_money);
-            HUD.SetLinksText(_links);
+            Money -= 15;
+            LinkCount += 1;
+            HUD.SetMoneyText(Money);
+            HUD.SetLinkCountText(LinkCount);
         }
     }
 }

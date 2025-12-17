@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    [SerializeField] private GameObject sourceNodePrefab;
-    [SerializeField] private GameObject marketNodePrefab;
-    [SerializeField] private GameObject obstacleNodePrefab;
-    [SerializeField] private GameObject linkNodePrefab;
+    [SerializeField] private GameObject _sourceNodePrefab;
+    [SerializeField] private GameObject _marketNodePrefab;
+    [SerializeField] private GameObject _obstacleNodePrefab;
+    [SerializeField] private GameObject _linkNodePrefab;
     [SerializeField] private Vector2Int _gridSize = new (10, 10);
     [SerializeField] private float _cellSize = 1.0f;
 
@@ -27,12 +27,12 @@ public class Map : MonoBehaviour
     {
         var location = new Vector2Int(3, 4);
         var position = new Vector3(location.x * _cellSize, location.y * _cellSize, 0);
-        var sourceNode = Instantiate(sourceNodePrefab, position, Quaternion.identity);
+        var sourceNode = Instantiate(_sourceNodePrefab, position, Quaternion.identity);
         SetNodeAt(location, sourceNode.GetComponent<Node>());
 
         location = new Vector2Int(7, 4);
         position = new Vector3(location.x * _cellSize, location.y * _cellSize, 0);
-        var marketNode = Instantiate(marketNodePrefab, position, Quaternion.identity);
+        var marketNode = Instantiate(_marketNodePrefab, position, Quaternion.identity);
         SetNodeAt(location, marketNode.GetComponent<Node>());
 
         var obstacleCount = 5;
@@ -45,7 +45,7 @@ public class Map : MonoBehaviour
                 continue;
             }
             position = new Vector3(location.x * _cellSize, location.y * _cellSize, 0);
-            var obstacleNode = Instantiate(obstacleNodePrefab, position, Quaternion.identity);
+            var obstacleNode = Instantiate(_obstacleNodePrefab, position, Quaternion.identity);
             SetNodeAt(location, obstacleNode.GetComponent<Node>());
         }
     }
@@ -113,7 +113,7 @@ public class Map : MonoBehaviour
             if (node == null)
             {
                 var linkNodePosition = new Vector3(nodeLocation.x * _cellSize, nodeLocation.y * _cellSize, 0);
-                var linkNodeObject = Instantiate(linkNodePrefab, linkNodePosition, Quaternion.identity);
+                var linkNodeObject = Instantiate(_linkNodePrefab, linkNodePosition, Quaternion.identity);
                 var linkNode = linkNodeObject.GetComponent<LinkNode>();
                 linkNode.transportLines.Add(startingNode.transportLines[0]);
                 SetNodeAt(nodeLocation, linkNode);

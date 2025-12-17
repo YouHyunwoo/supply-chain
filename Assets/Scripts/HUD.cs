@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI moneyText;
-    [SerializeField] private TextMeshProUGUI linksText;
+    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _linksText;
     [SerializeField] private Button _addLinkButton;
 
     public void SetMoneyText(float amount)
     {
-        moneyText.text = $"$ {amount:0}";
+        _moneyText.text = $"$ {amount:0}";
     }
 
-    public void SetLinksText(int linkCount)
+    public void SetLinkCountText(int linkCount)
     {
-        linksText.text = $"Links: {linkCount}";
+        _linksText.text = $"Links: {linkCount}";
     }
 }
