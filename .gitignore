@@ -100,3 +100,5 @@ InitTestScene*.unity*
 
 .vscode/
 Assets/TextMesh Pro
+Assets/Plugins
+Assets/Plugins/Demigiant
