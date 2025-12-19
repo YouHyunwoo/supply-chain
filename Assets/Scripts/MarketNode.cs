@@ -1,3 +1,4 @@
+using SupplyChain.Model;
 using UnityEngine;
 
 public class MarketNode : Node
@@ -16,7 +17,7 @@ public class MarketNode : Node
         if (resourceCargo != null)
         {
             // Debug.Log("MarketNode: Selling ResourceCargo with Price " + resourceCargo.Price);
-            Main.Instance.SellResourceCargo(resourceCargo.Price);
+            Globals.MainSystem.SellResourceCargo(resourceCargo.Price);
             resourceCargo.Dissolve();
         }
     }

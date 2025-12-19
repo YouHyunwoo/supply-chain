@@ -7,7 +7,7 @@ public class ResourceCargo : Cargo
     public bool isTransported = false;
     private Transform _carrier;
 
-    public float Price => Value * Amount;
+    public int Price => (int)(Value * Amount);
     public bool IsBeingCarried => _carrier != null;
 
     public void Dissolve()

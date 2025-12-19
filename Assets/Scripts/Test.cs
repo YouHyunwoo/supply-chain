@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public void OnStart()
+    public void SetUp()
     {
-        Debug.Log("[Test] 테스트 시작");
+        
     }
 }
