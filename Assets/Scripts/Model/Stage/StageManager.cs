@@ -65,10 +65,12 @@ namespace SupplyChain.Model
 
             Globals.MainSystem.Player.SetMode(ToolType.None);
             CameraMovement.SetPosition(Vector2.zero);
-            Globals.MainView.StageView.gameObject.SetActive(false);
-            Globals.MainView.LaboratoryView.gameObject.SetActive(true);
+            Globals.MainView.StageView.Hide();
+            Globals.MainView.LaboratoryView.Show();
             Globals.MainView.LaboratoryView.UpgradeView.gameObject.SetActive(true);
             Globals.MainView.LaboratoryView.MapView.gameObject.SetActive(false);
+            Globals.MainView.StageWorldView.Hide();
+            Globals.MainView.LaboratoryWorldView.Show();
         }
 
         public void FailObjective()
@@ -83,16 +85,20 @@ namespace SupplyChain.Model
 
             Globals.MainSystem.Player.SetMode(ToolType.None);
             CameraMovement.SetPosition(Vector2.zero);
-            Globals.MainView.StageView.gameObject.SetActive(false);
-            Globals.MainView.LaboratoryView.gameObject.SetActive(true);
+            Globals.MainView.StageView.Hide();
+            Globals.MainView.LaboratoryView.Show();
             Globals.MainView.LaboratoryView.UpgradeView.gameObject.SetActive(true);
             Globals.MainView.LaboratoryView.MapView.gameObject.SetActive(false);
+            Globals.MainView.StageWorldView.Hide();
+            Globals.MainView.LaboratoryWorldView.Show();
         }
 
         public void HandleStageStarted(int stageIndex)
         {
-            Globals.MainView.LaboratoryView.gameObject.SetActive(false);
-            Globals.MainView.StageView.gameObject.SetActive(true);
+            Globals.MainView.LaboratoryView.Hide();
+            Globals.MainView.StageView.Show();
+            Globals.MainView.LaboratoryWorldView.Hide();
+            Globals.MainView.StageWorldView.Show();
 
             StartStage(stageIndex);
         }
