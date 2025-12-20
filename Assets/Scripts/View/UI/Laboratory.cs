@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SupplyChain.View.UI
 {
-    public class Laboratory : MonoBehaviour
+    public class Laboratory : View
     {
         public RectTransform UpgradeView;
         public RectTransform MapView;

@@ -1,4 +1,4 @@
-using SupplyChain.View.UI;
+using SupplyChain.View;
 
 namespace SupplyChain.Model
 {

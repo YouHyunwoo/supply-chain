@@ -1,12 +1,17 @@
 using SupplyChain.Model;
 using UnityEngine;
 
-namespace SupplyChain.View.UI
+namespace SupplyChain.View
 {
     public class MainView : MonoBehaviour
     {
-        public Stage StageView;
-        public Laboratory LaboratoryView;
+        [Header("UI")]
+        public UI.Stage StageView;
+        public UI.Laboratory LaboratoryView;
+
+        [Header("World")]
+        public World.Stage StageWorldView;
+        public World.Laboratory LaboratoryWorldView;
 
         private void Awake()
         {
@@ -15,7 +20,11 @@ namespace SupplyChain.View.UI
 
         public void SetUp()
         {
-            
+            StageView.Show();
+            LaboratoryView.Hide();
+
+            StageWorldView.Show();
+            LaboratoryWorldView.Hide();
         }
     }
 }

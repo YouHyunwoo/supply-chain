@@ -20,7 +20,7 @@ namespace SupplyChain.View.World
         Node[,] nodeGrid;
         int nodeCount;
         private int _currentSectorIndex;
-        private float _timer;
+        private float _timer, _duration;
         private int _earnings;
 
         public int Width => (int)(_regionData.Size.x * _cellSize);
@@ -31,8 +31,8 @@ namespace SupplyChain.View.World
         private void Update()
         {
             _timer += Time.deltaTime;
-            Globals.MainView.StageView.Timer.SetTimeRatio((_regionData.Duration - _timer) / _regionData.Duration);
-            if (_timer >= _regionData.Duration)
+            Globals.MainView.StageView.Timer.SetTimeRatio((_duration - _timer) / _duration);
+            if (_timer >= _duration)
             {
                 Globals.MainSystem.StageManager.FailObjective();
             }
@@ -42,6 +42,7 @@ namespace SupplyChain.View.World
         {
             _regionData = regionData;
             _timer = 0f;
+            _duration = _regionData.Duration + Globals.MainSystem.Player.AdditionalTime;
             _earnings = 0;
             _currentSectorIndex = -1;
 
@@ -84,7 +85,7 @@ namespace SupplyChain.View.World
 
         public void UnlockSector(int sectorIndex)
         {
-            var sectorSize = sectorIndex * _regionData.ExtensiveSectorSize + _regionData.InitialSectorSize;
+            var sectorSize = Mathf.Min(sectorIndex * _regionData.ExtensiveSectorSize + _regionData.InitialSectorSize + Globals.MainSystem.Player.AdditionalRegionSize, _regionData.Size.x);
             var centerLocation = new Vector2Int(_regionData.Size.x / 2, _regionData.Size.y / 2);
 
             for (int y = -sectorSize / 2; y <= sectorSize / 2; y++)

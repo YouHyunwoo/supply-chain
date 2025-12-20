@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SupplyChain.View.UI
 {
-    public class Stage : MonoBehaviour
+    public class Stage : View
     {
         public ToolSlotList ToolSlotList;
         public Timer Timer;

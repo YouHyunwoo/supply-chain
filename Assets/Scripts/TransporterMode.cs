@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using SupplyChain.Model;
+using SupplyChain.View.World;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TransporterMode : MonoBehaviour
 {
-    [SerializeField] private Collider2D _transferCollider;
-    private List<ResourceCargo> _carriedCargos = new ();
+    [SerializeField] private Carrier _carrier;
 
     // Gemini 3 Flash: UI 위에 마우스가 있는지 확인, Physics2D Raycast가 콜라이더를 인식해서 무시하는 문제 해결
     public bool IsPointerOverUI()
@@ -35,13 +34,12 @@ public class TransporterMode : MonoBehaviour
 
     private void OnEnable()
     {
-        _transferCollider.enabled = false;
+        _carrier.enabled = false;
     }
 
     private void OnDisable()
     {
-        UnfollowAllCargo();
-        _transferCollider.enabled = false;
+        _carrier.enabled = false;
     }
 
     private void Update()
@@ -50,41 +48,11 @@ public class TransporterMode : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _transferCollider.enabled = true;
+            _carrier.enabled = true;
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            // Debug.Log("[Player] Switching to Default Tool");
-            UnfollowAllCargo();
-            _transferCollider.enabled = false;
+            _carrier.enabled = false;
         }
-        else
-        {
-            var mouse = Input.mousePosition;
-            var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, -Camera.main.transform.position.z));
-            transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (Globals.MainSystem.ToolManager.Type != ToolType.Transporter) return;
-
-        var hasResourceCargo = collision.TryGetComponent<ResourceCargo>(out var resourceCargo);
-        if (!hasResourceCargo) return;
-        if (resourceCargo.IsBeingCarried) return;
-
-        // Debug.Log("[Player] Picking up ResourceCargo with Price " + resourceCargo.Price);
-        resourceCargo.Follow(transform);
-        _carriedCargos.Add(resourceCargo);
-    }
-
-    private void UnfollowAllCargo() // Cargo 운송 수간 = 플레이어 -> = null
-    {
-        foreach (var cargo in _carriedCargos)
-        {
-            cargo.Unfollow();
-        }
-        _carriedCargos.Clear();
     }
 }

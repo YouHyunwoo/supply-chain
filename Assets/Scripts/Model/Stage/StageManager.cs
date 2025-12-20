@@ -12,6 +12,11 @@ namespace SupplyChain.Model
 
         public Region Region => _region;
 
+        public void SetUp()
+        {
+            
+        }
+
         public void StartStage(int regionIndex)
         {
             var toolManager = Globals.MainSystem.ToolManager;
