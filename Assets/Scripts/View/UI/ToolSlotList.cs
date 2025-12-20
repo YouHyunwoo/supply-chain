@@ -13,7 +13,7 @@ namespace SupplyChain.View.UI
 
         public IReadOnlyList<ToolSlotItem> ToolSlotItems => _toolSlotItems.AsReadOnly();
 
-        public void SetUpToolSlots(List<Data.Tool> toolDataList, Action<GameObject> onClicked, int defaultSelectedIndex = 0)
+        public void SetUpToolSlots(Data.Tool[] toolDataArray, Action<GameObject> onClicked, int defaultSelectedIndex = 0)
         {
             foreach (var toolSlotItem in _toolSlotItems)
             {
@@ -21,9 +21,9 @@ namespace SupplyChain.View.UI
             }
             _toolSlotItems.Clear();
 
-            for (int i = 0; i < toolDataList.Count; i++)
+            for (int i = 0; i < toolDataArray.Length; i++)
             {
-                var toolData = toolDataList[i];
+                var toolData = toolDataArray[i];
                 var toolSlotItemObject = Instantiate(_toolSlotItemPrefab, _toolSlotItemContainer);
                 var toolSlotItem = toolSlotItemObject.GetComponent<ToolSlotItem>();
                 toolSlotItem.SetType(toolData.Type);

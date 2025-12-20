@@ -1967,10 +1967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d69b5fca0269d4bac520e1369b7fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToolDataList:
-  - {fileID: 11400000, guid: 2c51b7ccf624b8547b1710c655338acb, type: 2}
-  - {fileID: 11400000, guid: 9fa9f783d11609a47b1eef7ab880f654, type: 2}
-  - {fileID: 11400000, guid: d31f2458cacfc5e44a9548fa970b1710, type: 2}
 --- !u!1 &1160408370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0b0f86aedd557418e22f3329d4d30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tools:
+  - {fileID: 11400000, guid: 2c51b7ccf624b8547b1710c655338acb, type: 2}
   Regions:
   - {fileID: 11400000, guid: 27b776ec204ad23448006e781c4484e6, type: 2}
   - {fileID: 11400000, guid: 599043a90f2db6a498aab454237efb77, type: 2}

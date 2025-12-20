@@ -4,7 +4,7 @@ namespace SupplyChain.Model
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private TransporterMode _transporterMode;
+        [SerializeField] private Transporter _transporterMode;
         // [SerializeField] private InspectorMode _inspectorMode;
         [SerializeField] private PathCreatorMode _pathCreatorMode;
 

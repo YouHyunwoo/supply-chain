@@ -34,7 +34,7 @@ namespace SupplyChain.Model
 
             CameraMovement.SetPosition(Region.Center);
             Globals.MainView.StageView.SetMoneyText(Globals.MainSystem.Player.Money);
-            Globals.MainView.StageView.ToolSlotList.SetUpToolSlots(toolManager.ToolDataList, toolManager.HandleToolSelected);
+            Globals.MainView.StageView.ToolSlotList.SetUpToolSlots(Globals.Database.Tools, toolManager.HandleToolSelected);
 
             toolManager.Select(ToolType.Transporter);
         }
