@@ -33,7 +33,7 @@ namespace SupplyChain.Model
             _region = region;
 
             CameraMovement.SetPosition(Region.Center);
-            Globals.MainView.StageView.SetMoneyText(Globals.MainSystem.Player.Money);
+            Globals.MainView.StageView.SetMoney(Globals.MainSystem.Player.Money);
             Globals.MainView.StageView.ToolSlotList.SetUpToolSlots(Globals.Database.Tools, toolManager.HandleToolSelected);
 
             toolManager.Select(ToolType.Transporter);
@@ -69,6 +69,7 @@ namespace SupplyChain.Model
             Globals.MainView.LaboratoryView.Show();
             Globals.MainView.LaboratoryView.UpgradeView.gameObject.SetActive(true);
             Globals.MainView.LaboratoryView.MapView.gameObject.SetActive(false);
+            Globals.MainView.LaboratoryView.SetMoney(Globals.MainSystem.Player.Money);
             Globals.MainView.StageWorldView.Hide();
             Globals.MainView.LaboratoryWorldView.Show();
         }
@@ -89,6 +90,7 @@ namespace SupplyChain.Model
             Globals.MainView.LaboratoryView.Show();
             Globals.MainView.LaboratoryView.UpgradeView.gameObject.SetActive(true);
             Globals.MainView.LaboratoryView.MapView.gameObject.SetActive(false);
+            Globals.MainView.LaboratoryView.SetMoney(Globals.MainSystem.Player.Money);
             Globals.MainView.StageWorldView.Hide();
             Globals.MainView.LaboratoryWorldView.Show();
         }

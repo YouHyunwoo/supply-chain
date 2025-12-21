@@ -1,3 +1,4 @@
+using SupplyChain.Model;
 using UnityEngine;
 
 public class ResourceCargo : Cargo
@@ -5,6 +6,7 @@ public class ResourceCargo : Cargo
     public float Value = 0.0f;
     public float Amount = 0.0f;
     public bool isTransported = false;
+    public SourceNode Origin;
     private Transform _carrier;
 
     public int Price => (int)(Value * Amount);
@@ -13,6 +15,7 @@ public class ResourceCargo : Cargo
     public void Dissolve()
     {
         _carrier = null;
+        Origin = null;
         Destroy(gameObject);
     }
 
@@ -31,8 +34,8 @@ public class ResourceCargo : Cargo
         {
             transform.position = Vector3.Lerp(
                 transform.position,
-                _carrier.position,
-                Time.deltaTime * 10.0f
+                _carrier.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), 0),
+                Time.deltaTime * 10.0f * Globals.MainSystem.Player.CarrierSpeedMultiplier
             );
         }
     }

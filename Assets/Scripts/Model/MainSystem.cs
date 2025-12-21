@@ -8,6 +8,7 @@ namespace SupplyChain.Model
         public StageManager StageManager;
         public ToolManager ToolManager;
         public Player Player;
+        public UpgradeManager UpgradeManager;
 
         private void Awake()
         {
@@ -20,6 +21,7 @@ namespace SupplyChain.Model
             Test.SetUp();
             StageManager.SetUp();
             ToolManager.SetUp();
+            Player.SetUp();
             Globals.MainView.SetUp();
 
             // 초기 세팅: 의존적 행위
@@ -31,7 +33,7 @@ namespace SupplyChain.Model
             var actualPrice = Mathf.RoundToInt(price * Player.EarningsMultiplier);
             Player.Money += actualPrice;
             Globals.MainSystem.StageManager.Region.AddEarnings(actualPrice);
-            Globals.MainView.StageView.SetMoneyText(Player.Money);
+            Globals.MainView.StageView.SetMoney(Player.Money);
         }
 
         public bool BuyTool(int toolIndex, int toolCost)
@@ -43,7 +45,7 @@ namespace SupplyChain.Model
             }
 
             Player.Money -= toolCost;
-            Globals.MainView.StageView.SetMoneyText(Player.Money);
+            Globals.MainView.StageView.SetMoney(Player.Money);
             ToolManager.Unlock(toolIndex);
 
             Debug.Log("[Main] 도구 구매 완료: " + toolIndex + ", 남은 자금: " + Player.Money);

@@ -8,6 +8,8 @@ public class Transporter : Tool
 {
     [SerializeField] private Carrier _carrier;
 
+    public Carrier Carrier => _carrier;
+
     // Gemini 3 Flash: UI 위에 마우스가 있는지 확인, Physics2D Raycast가 콜라이더를 인식해서 무시하는 문제 해결
     public bool IsPointerOverUI()
     {

@@ -1,17 +1,16 @@
 using DG.Tweening;
+using SupplyChain.Model;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace SupplyChain.View.World
 {
     [ExecuteAlways]
-    public class UpgradeNode : MonoBehaviour,
-        IPointerEnterHandler,
-        IPointerExitHandler,
-        IPointerClickHandler
+    public class UpgradeNode : MonoBehaviour
     {
         [SerializeField] private LineRenderer _edgePrefab;
+        [SerializeField] private Data.Upgrade _upgradeData;
         public UpgradeNode[] ConnectedNodes;
+        public bool IsUpgradable; // Debug
 
         private void Start()
         {
@@ -48,21 +47,47 @@ namespace SupplyChain.View.World
             }
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public void Activate()
         {
-            transform.DOScale(1.2f, 0.2f).SetEase(Ease.InBack);
-            // 설명 보이기
+            transform.DOScale(1.2f, 0.1f).SetEase(Ease.InBack);
+
+            if (_upgradeData == null) return;
+            Globals.MainView.LaboratoryView.UpgradeView.ShowInformation(
+                _upgradeData.Name,
+                _upgradeData.Description,
+                _upgradeData.Cost,
+                transform.position + Vector3.up * 2f
+            );
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public void Deactivate()
         {
-            transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack);
-            // 설명 숨기기
+            transform.DOScale(1f, 0.1f).SetEase(Ease.OutBack);
+            Globals.MainView.LaboratoryView.UpgradeView.HideInformation();
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void Select()
         {
-            Debug.Log("Upgrade Node Clicked");
+            if (IsUpgradable && Globals.MainSystem.Player.Money >= _upgradeData.Cost)
+            {
+                if (_upgradeData == null) return;
+
+                Debug.Log("Upgrade applied successfully.");
+
+                Globals.MainSystem.Player.Money -= _upgradeData.Cost;
+                Globals.MainView.LaboratoryView.SetMoney(Globals.MainSystem.Player.Money);
+                foreach (var feature in _upgradeData.Features)
+                {
+                    Globals.MainSystem.UpgradeManager.UpgradeFeature(feature);
+                }
+                // particle play
+            }
+            else
+            {
+                Debug.Log("Upgrade application failed.");
+
+                transform.DOShakePosition(0.1f, 0.08f, 30, 90, false, false);
+            }
         }
     }
 }

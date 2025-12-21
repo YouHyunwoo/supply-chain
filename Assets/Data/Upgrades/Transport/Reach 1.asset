@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07d67c228f6be146b2cb899c931bd4a, type: 3}
+  m_Name: Reach 1
+  m_EditorClassIdentifier: 
+  Name: "\uC0C1\uD638\uC791\uC6A9 \uC0AC\uAC70\uB9AC \uC99D\uAC00 I"
+  Description: "\uB9C8\uC6B0\uC2A4\uC640 \uBB3C\uB958\uC758 \uC0C1\uD638\uC791\uC6A9
+    \uAC70\uB9AC\uAC00 10% \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
+  Cost: 1
+  Features:
+  - Id: reach-1
+    Value: 0.22

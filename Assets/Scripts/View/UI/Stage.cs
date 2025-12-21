@@ -9,6 +9,6 @@ namespace SupplyChain.View.UI
         public Timer Timer;
         [SerializeField] private TextMeshProUGUI _moneyText;
 
-        public void SetMoneyText(float amount) => _moneyText.text = $"$ {amount:0}";
+        public void SetMoney(int amount) => _moneyText.text = $"$ {amount}";
     }
 }

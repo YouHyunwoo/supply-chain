@@ -4,9 +4,9 @@ using UnityEngine;
 namespace SupplyChain.Data
 {
     [Serializable]
-    public class UpgradeEffect
+    public class UpgradeFeature
     {
-        public string Name;
+        public string Id;
         public float Value;
     }
 
@@ -16,6 +16,6 @@ namespace SupplyChain.Data
         public string Name;
         public string Description;
         public int Cost;
-        public UpgradeEffect[] Effects;
+        public UpgradeFeature[] Features;
     }
 }

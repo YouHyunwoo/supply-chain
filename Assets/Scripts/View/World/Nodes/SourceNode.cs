@@ -27,6 +27,7 @@ public class SourceNode : Node
             if (_currentCargo == null)
             {
                 _currentCargo = Instantiate(_resourceCargoPrefab, transform.position, Quaternion.identity);
+                _currentCargo.Origin = this;
             }
 
             _currentCargo.Value = _resourceValue;
@@ -42,8 +43,13 @@ public class SourceNode : Node
                 };
                 transportLine.transports.Add(transport);
                 _currentCargo.StartTransport();
-                _currentCargo = null;
+                ReleaseCargo();
             }
         }
+    }
+
+    public void ReleaseCargo()
+    {
+        _currentCargo = null;
     }
 }

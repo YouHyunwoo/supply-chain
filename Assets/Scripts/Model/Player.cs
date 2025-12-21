@@ -13,6 +13,24 @@ namespace SupplyChain.Model
         public float EarningsMultiplier;
         public float SourceGenerationSpeedMultiplier;
         public int AdditionalRegionSize;
+        public int CarrierCapacity;
+        public float CarrierSpeedMultiplier;
+        [SerializeField] private float _carrierInteractionRange;
+        // [Pro]
+        public float CarrierInteractionRange
+        {
+            get => _carrierInteractionRange;
+            set
+            {
+                _carrierInteractionRange = value;
+                _transporterMode.Carrier.SetInteractionRange(value);
+            }
+        }
+
+        public void SetUp()
+        {
+            _transporterMode.Carrier.SetInteractionRange(_carrierInteractionRange);
+        }
 
         public void SetMode(ToolType toolType)
         {

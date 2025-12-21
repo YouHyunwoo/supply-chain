@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace SupplyChain.View.World
 {
-    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(CircleCollider2D))]
     public class Carrier : MonoBehaviour
     {
-        private Collider2D _collider;
+        private CircleCollider2D _collider;
         private readonly List<ResourceCargo> _carriedCargos = new ();
 
         private void Awake()
         {
-            _collider = GetComponent<Collider2D>();
+            _collider = GetComponent<CircleCollider2D>();
         }
 
         private void OnEnable()
@@ -40,10 +40,16 @@ namespace SupplyChain.View.World
             var hasResourceCargo = collision.TryGetComponent<ResourceCargo>(out var resourceCargo);
             if (!hasResourceCargo) return;
             if (resourceCargo.IsBeingCarried) return;
+            if (_carriedCargos.Count >= Globals.MainSystem.Player.CarrierCapacity) return;
 
             // Debug.Log("[Player] Picking up ResourceCargo with Price " + resourceCargo.Price);
             // 카고의 생산지에 빠져나갔다고 알림
             resourceCargo.Follow(transform);
+            if (_carriedCargos.Count > 0)
+            {
+                _carriedCargos[^1].Follow(resourceCargo.transform);
+            }
+            resourceCargo.Origin.ReleaseCargo();
             _carriedCargos.Add(resourceCargo);
         }
 
@@ -54,6 +60,11 @@ namespace SupplyChain.View.World
                 cargo.Unfollow();
             }
             _carriedCargos.Clear();
+        }
+
+        public void SetInteractionRange(float range)
+        {
+            _collider.radius = range;
         }
     }
 }
