@@ -1,4 +1,5 @@
 using SupplyChain.Model;
+using SupplyChain.View.World;
 using UnityEngine;
 
 public class ResourceCargo : Cargo
@@ -14,6 +15,10 @@ public class ResourceCargo : Cargo
 
     public void Dissolve()
     {
+        if (_carrier != null && _carrier.TryGetComponent<Carrier>(out var carrier))
+        {
+            carrier.UnfollowCargo(this);
+        }
         _carrier = null;
         Origin = null;
         Destroy(gameObject);

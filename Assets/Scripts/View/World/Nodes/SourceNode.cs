@@ -19,6 +19,8 @@ public class SourceNode : Node
 
     private void UpdateResourceGeneration()
     {
+        if (_currentCargo != null) return;
+
         _timer += Time.deltaTime * _generationSpeed * Globals.MainSystem.Player.SourceGenerationSpeedMultiplier;
         if (_timer >= 1.0f)
         {

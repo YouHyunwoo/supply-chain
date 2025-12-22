@@ -53,6 +53,28 @@ namespace SupplyChain.View.World
             _carriedCargos.Add(resourceCargo);
         }
 
+        public void UnfollowCargo(ResourceCargo cargo) // Cargo 운송 수간 = 플레이어 -> 다음 Cargo
+        {
+            var index = _carriedCargos.IndexOf(cargo);
+            if (index == -1) return;
+
+            cargo.Unfollow();
+            _carriedCargos.RemoveAt(index);
+
+            // 뒤에 있는 Cargo가 있으면 그 Cargo가 다음 Cargo를 따라가도록 설정
+            if (index < _carriedCargos.Count)
+            {
+                if (index == 0)
+                {
+                    _carriedCargos[index].Follow(transform);
+                }
+                else
+                {
+                    _carriedCargos[index].Follow(_carriedCargos[index - 1].transform);
+                }
+            }
+        }
+
         public void UnfollowAllCargo() // Cargo 운송 수간 = 플레이어 -> = null
         {
             foreach (var cargo in _carriedCargos)
