@@ -48,6 +48,7 @@ MonoBehaviour:
   _edgePrefab: {fileID: 4531389665543608382, guid: 71ca19a7d75e3ba4795c92fd4e4a6bb4, type: 3}
   _upgradeData: {fileID: 0}
   ConnectedNodes: []
+  IsUpgradable: 0
 --- !u!1 &6126677113844297378
 GameObject:
   m_ObjectHideFlags: 0
