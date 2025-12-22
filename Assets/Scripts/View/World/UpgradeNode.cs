@@ -49,7 +49,7 @@ namespace SupplyChain.View.World
 
         public void Activate()
         {
-            transform.DOScale(1.2f, 0.1f).SetEase(Ease.InBack);
+            transform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
 
             if (_upgradeData == null) return;
             Globals.MainView.LaboratoryView.UpgradeView.ShowInformation(
@@ -62,7 +62,7 @@ namespace SupplyChain.View.World
 
         public void Deactivate()
         {
-            transform.DOScale(1f, 0.1f).SetEase(Ease.OutBack);
+            transform.DOScale(1f, 0.1f).SetEase(Ease.InQuad);
             Globals.MainView.LaboratoryView.UpgradeView.HideInformation();
         }
 
