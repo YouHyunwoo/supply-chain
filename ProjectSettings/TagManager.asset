@@ -53,5 +53,8 @@ TagManager:
   - name: Fog
     uniqueID: 543597487
     locked: 0
+  - name: Progress
+    uniqueID: 2332557997
+    locked: 0
   m_RenderingLayers:
   - Default

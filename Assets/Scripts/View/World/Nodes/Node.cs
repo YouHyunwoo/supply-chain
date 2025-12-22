@@ -5,12 +5,17 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(LineRenderer))]
 public class Node : MonoBehaviour
 {
+    private static readonly int ProgressPropertyId = Shader.PropertyToID("_Progress");
+
     [SerializeField] private bool _isSelectable = true;
     [SerializeField] private bool _lockOnAwake = false;
+    [SerializeField] private bool _showProgressOnAwake = false;
     [SerializeField] private int _maxOutputCount = 1;
+    private MaterialPropertyBlock _materialPropertyBlock;
 
     protected GameObject _selector;
     protected SpriteRenderer _lockSpriteRenderer;
+    protected SpriteRenderer _progressSpriteRenderer;
     protected LineRenderer _lineRenderer;
     private int _outputCount = 0;
     private bool _isSelected = false;
@@ -20,14 +25,21 @@ public class Node : MonoBehaviour
     public int OutputCount => _outputCount;
     public int MaxOutputCount => _maxOutputCount;
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        _materialPropertyBlock = new MaterialPropertyBlock();
         _selector = transform.Find("Selector").gameObject;
         _lockSpriteRenderer = transform.Find("Lock").GetComponent<SpriteRenderer>();
+        _progressSpriteRenderer = transform.Find("Progress").Find("Bar").GetComponent<SpriteRenderer>();
         _lineRenderer = GetComponent<LineRenderer>();
         if (_lockOnAwake)
         {
             SetLocked(true);
+        }
+        if (_showProgressOnAwake)
+        {
+            ShowProgress(true);
+            SetProgress(0f);
         }
     }
 
@@ -80,6 +92,18 @@ public class Node : MonoBehaviour
     public void SetLocked(bool locked)
     {
         _lockSpriteRenderer.enabled = locked;
+    }
+
+    public void ShowProgress(bool show)
+    {
+        _progressSpriteRenderer.transform.parent.gameObject.SetActive(show);
+    }
+
+    public void SetProgress(float progress)
+    {
+        _progressSpriteRenderer.GetPropertyBlock(_materialPropertyBlock);
+        _materialPropertyBlock.SetFloat(ProgressPropertyId, progress);
+        _progressSpriteRenderer.SetPropertyBlock(_materialPropertyBlock);
     }
 
     public virtual void OnPointerEnter(BaseEventData eventData)

@@ -22,6 +22,7 @@ public class SourceNode : Node
         if (_currentCargo != null) return;
 
         _timer += Time.deltaTime * _generationSpeed * Globals.MainSystem.Player.SourceGenerationSpeedMultiplier;
+        SetProgress(_timer);
         if (_timer >= 1.0f)
         {
             _timer = 0.0f;

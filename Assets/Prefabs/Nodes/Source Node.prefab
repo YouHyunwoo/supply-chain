@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isSelectable: 1
   _lockOnAwake: 0
+  _showProgressOnAwake: 1
   _maxOutputCount: 1
   _resourceCargoPrefab: {fileID: 4490104984913049194, guid: d845fd6a5e4211247bbc8b7624cac6f2, type: 3}
   _generationSpeed: 1
