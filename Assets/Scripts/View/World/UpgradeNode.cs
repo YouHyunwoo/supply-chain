@@ -49,19 +49,21 @@ namespace SupplyChain.View.World
 
         public void Activate()
         {
-            transform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
-
             if (_upgradeData == null) return;
+
+            transform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
             Globals.MainView.LaboratoryView.UpgradeView.ShowInformation(
                 _upgradeData.Name,
                 _upgradeData.Description,
                 _upgradeData.Cost,
-                transform.position + Vector3.up * 2f
+                transform.position
             );
         }
 
         public void Deactivate()
         {
+            if (_upgradeData == null) return;
+
             transform.DOScale(1f, 0.1f).SetEase(Ease.InQuad);
             Globals.MainView.LaboratoryView.UpgradeView.HideInformation();
         }
