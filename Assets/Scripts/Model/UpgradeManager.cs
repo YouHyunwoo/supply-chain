@@ -24,6 +24,11 @@ namespace SupplyChain.Model
                 case "capacity-3":
                     Globals.MainSystem.Player.CarrierCapacity += (int)feature.Value;
                     break;
+                case "mining-speed-1":
+                case "mining-speed-2":
+                case "mining-speed-3":
+                    Globals.MainSystem.Player.SourceGenerationSpeedMultiplier = feature.Value;
+                    break;
             }
         }
     }
