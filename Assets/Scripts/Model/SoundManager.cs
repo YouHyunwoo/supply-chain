@@ -6,6 +6,11 @@ namespace SupplyChain.Model
     {
         [SerializeField] private AudioSource _audioSource;
 
+        private void Awake()
+        {
+            Globals.SoundManager = this;
+        }
+
         public void PlayBGM(AudioClip clip)
         {
             if (_audioSource.clip == clip) return;

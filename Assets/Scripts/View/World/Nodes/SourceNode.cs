@@ -25,29 +25,34 @@ public class SourceNode : Node
         SetProgress(_timer);
         if (_timer >= 1.0f)
         {
-            _timer = 0.0f;
-            
-            if (_currentCargo == null)
-            {
-                _currentCargo = Instantiate(_resourceCargoPrefab, transform.position, Quaternion.identity);
-                _currentCargo.Origin = this;
-            }
+            _timer -= 1.0f;
+            GenerateResourceCargo();
+        }
+    }
 
-            _currentCargo.Value = _resourceValue;
-            var actualAmount = Mathf.Min(_currentCargo.Amount + _resourceAmount, _capacity);
-            _currentCargo.Amount = actualAmount;
+    private void GenerateResourceCargo()
+    {
+        if (_currentCargo == null)
+        {
+            _currentCargo = Instantiate(_resourceCargoPrefab, transform.position, Quaternion.identity);
+            _currentCargo.Origin = this;
+            Globals.SoundManager.PlaySFX(Globals.Database.SFXClips[1]);
+        }
 
-            if (transportLines.Count > 0)
+        _currentCargo.Value = _resourceValue;
+        var actualAmount = Mathf.Min(_currentCargo.Amount + _resourceAmount, _capacity);
+        _currentCargo.Amount = actualAmount;
+
+        if (transportLines.Count > 0)
+        {
+            var transportLine = transportLines[0];
+            var transport = new Transport
             {
-                var transportLine = transportLines[0];
-                var transport = new Transport
-                {
-                    cargo = _currentCargo,
-                };
-                transportLine.transports.Add(transport);
-                _currentCargo.StartTransport();
-                ReleaseCargo();
-            }
+                cargo = _currentCargo,
+            };
+            transportLine.transports.Add(transport);
+            _currentCargo.StartTransport();
+            ReleaseCargo();
         }
     }
 

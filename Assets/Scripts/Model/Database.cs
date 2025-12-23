@@ -6,6 +6,8 @@ namespace SupplyChain.Model
     {
         public Data.Tool[] Tools;
         public Data.Region[] Regions;
+        public AudioClip[] BGMClips;
+        public AudioClip[] SFXClips;
 
         private void Awake()
         {

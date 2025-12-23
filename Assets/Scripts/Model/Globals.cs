@@ -7,5 +7,6 @@ namespace SupplyChain.Model
         public static MainSystem MainSystem;
         public static MainView MainView;
         public static Database Database;
+        public static SoundManager SoundManager;
     }
 }
