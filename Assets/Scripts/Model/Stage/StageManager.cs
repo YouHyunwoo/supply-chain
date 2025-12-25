@@ -19,6 +19,11 @@ namespace SupplyChain.Model
 
         public void StartStage(int regionIndex)
         {
+            Globals.MainView.LaboratoryView.Hide();
+            Globals.MainView.StageView.Show();
+            Globals.MainView.LaboratoryWorldView.Hide();
+            Globals.MainView.StageWorldView.Show();
+
             var toolManager = Globals.MainSystem.ToolManager;
 
             var regionData = LoadRegionData(regionIndex);
@@ -97,11 +102,6 @@ namespace SupplyChain.Model
 
         public void HandleStageStarted(int stageIndex)
         {
-            Globals.MainView.LaboratoryView.Hide();
-            Globals.MainView.StageView.Show();
-            Globals.MainView.LaboratoryWorldView.Hide();
-            Globals.MainView.StageWorldView.Show();
-
             StartStage(stageIndex);
         }
     }

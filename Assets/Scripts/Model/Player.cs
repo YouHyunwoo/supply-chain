@@ -16,7 +16,6 @@ namespace SupplyChain.Model
         public int CarrierCapacity;
         public float CarrierSpeedMultiplier;
         [SerializeField] private float _carrierInteractionRange;
-        // [Pro]
         public float CarrierInteractionRange
         {
             get => _carrierInteractionRange;
