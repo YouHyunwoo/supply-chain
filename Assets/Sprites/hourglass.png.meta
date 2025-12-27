@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d1b6e6d488378174882e7663f22b0e0a
+guid: dbfda5d772b0ee344bde39718ff51c5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1259782995087988778
-    second: Selector_0
+      213: 3824146322478515066
+    second: hourglass_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Selector_0
+      name: hourglass_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 5
+        y: 3
+        width: 22
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d7e3b36a0a548ee0800000000000000
-      internalID: -1259782995087988778
+      spriteID: a73c270b1d8121530800000000000000
+      internalID: 3824146322478515066
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Selector_0: -1259782995087988778
+      hourglass_0: 3824146322478515066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
