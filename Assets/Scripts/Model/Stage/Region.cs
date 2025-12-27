@@ -12,6 +12,7 @@ namespace SupplyChain.View.World
         [SerializeField] private GameObject _marketNodePrefab;
         [SerializeField] private GameObject _obstacleNodePrefab;
         [SerializeField] private GameObject _linkNodePrefab;
+        [SerializeField] private GameObject _processNodePrefab;
         [SerializeField] private float _cellSize = 1.0f;
 
         private Data.Region _regionData;
@@ -243,6 +244,13 @@ namespace SupplyChain.View.World
                 Debug.Log("[Region] 목표 수익 달성: " + _earnings + " / " + _regionData.ObjectiveEarnings);
                 Globals.MainSystem.StageManager.AchieveObjective();
             }
+        }
+
+        public void LocateNode(Vector2Int location, Node node)
+        {
+            var position = new Vector3(location.x * _cellSize, location.y * _cellSize, 0);
+            var nodeInstance = Instantiate(node, position, Quaternion.identity, transform);
+            SetNodeAt(location, nodeInstance);
         }
     }
 }

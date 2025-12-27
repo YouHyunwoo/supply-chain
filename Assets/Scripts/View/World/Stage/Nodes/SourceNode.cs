@@ -10,7 +10,6 @@ public class SourceNode : Node
     [SerializeField] private float _resourceAmount = 1.0f;
 
     private float _timer = 0.0f;
-    private ResourceCargo _currentCargo;
 
     private void Update()
     {
@@ -54,10 +53,5 @@ public class SourceNode : Node
             _currentCargo.StartTransport();
             ReleaseCargo();
         }
-    }
-
-    public void ReleaseCargo()
-    {
-        _currentCargo = null;
     }
 }

@@ -4,4 +4,5 @@ public enum ToolType
     Transporter,
     Inspector,
     PathCreator,
+    Locator,
 }

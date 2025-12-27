@@ -50,7 +50,5 @@ MonoBehaviour:
   _marketNodePrefab: {fileID: 7894861338394748308, guid: a5b4b9ef2224b924b9f5c2654843940c, type: 3}
   _obstacleNodePrefab: {fileID: 3992245827480788064, guid: 201e40b99ce688f46836a4b3e0b7549c, type: 3}
   _linkNodePrefab: {fileID: 3654309815706851802, guid: 946f05f67272e6a479e95bfccad6c114, type: 3}
-  _gridSize: {x: 21, y: 21}
-  _initialSectorSize: 5
-  _extensiveSectorSize: 4
+  _processNodePrefab: {fileID: 2835648174614934890, guid: d67ca004f37c7fa4c8e55cb3adaca528, type: 3}
   _cellSize: 1

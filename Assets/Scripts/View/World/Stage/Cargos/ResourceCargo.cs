@@ -1,13 +1,12 @@
+using SupplyChain.Data;
 using SupplyChain.Model;
 using SupplyChain.View.World;
 using UnityEngine;
 
 public class ResourceCargo : Cargo
 {
-    public float Value = 0.0f;
-    public float Amount = 0.0f;
+    public Resource ResourceType;
     public bool isTransported = false;
-    public SourceNode Origin;
     private Transform _carrier;
 
     public int Price => (int)(Value * Amount);

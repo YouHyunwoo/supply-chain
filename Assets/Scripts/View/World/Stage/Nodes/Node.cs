@@ -19,11 +19,17 @@ public class Node : MonoBehaviour
     protected LineRenderer _lineRenderer;
     private int _outputCount = 0;
     private bool _isSelected = false;
+    protected Cargo _currentCargo = null;
 
     public List<TransportLine> transportLines = new ();
 
     public int OutputCount => _outputCount;
     public int MaxOutputCount => _maxOutputCount;
+
+    public void ReleaseCargo()
+    {
+        _currentCargo = null;
+    }
 
     protected virtual void Awake()
     {

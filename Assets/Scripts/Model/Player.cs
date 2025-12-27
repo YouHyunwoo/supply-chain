@@ -7,6 +7,7 @@ namespace SupplyChain.Model
         [SerializeField] private Transporter _transporterMode;
         // [SerializeField] private InspectorMode _inspectorMode;
         [SerializeField] private PathCreatorMode _pathCreatorMode;
+        [SerializeField] private LocatorMode _locatorMode;
 
         public int Money;
         public float AdditionalTime;
@@ -36,6 +37,7 @@ namespace SupplyChain.Model
             _transporterMode.enabled = toolType == ToolType.Transporter;
             // _inspectorMode.enabled = toolType == ToolType.Inspector;
             _pathCreatorMode.enabled = toolType == ToolType.PathCreator;
+            _locatorMode.enabled = toolType == ToolType.Locator;
         }
     }
 }

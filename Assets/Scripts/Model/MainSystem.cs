@@ -51,5 +51,11 @@ namespace SupplyChain.Model
             Debug.Log("[Main] 도구 구매 완료: " + toolIndex + ", 남은 자금: " + Player.Money);
             return true;
         }
+
+        public void SelectProcessNode()
+        {
+            Debug.Log("[Main] 공정 노드 선택 처리");
+            ToolManager.Select(ToolType.Locator);
+        }
     }    
 }
