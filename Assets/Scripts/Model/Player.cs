@@ -1,3 +1,4 @@
+using SupplyChain.Enum;
 using UnityEngine;
 
 namespace SupplyChain.Model

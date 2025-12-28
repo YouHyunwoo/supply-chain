@@ -1,4 +1,5 @@
 using System;
+using SupplyChain.Enum;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

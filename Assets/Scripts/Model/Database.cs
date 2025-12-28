@@ -4,8 +4,9 @@ namespace SupplyChain.Model
 {
     public class Database : MonoBehaviour
     {
+        public Data.Game Game;
         public Data.Tool[] Tools;
-        public Data.Region[] Regions;
+        public Data.Level[] Levels;
         public AudioClip[] BGMClips;
         public AudioClip[] SFXClips;
 

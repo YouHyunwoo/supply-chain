@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SupplyChain.Enum;
 using UnityEngine;
 
 namespace SupplyChain.Model
@@ -24,7 +25,7 @@ namespace SupplyChain.Model
 
         public void Select(ToolType type)
         {
-            foreach (var toolSlotItem in Globals.MainView.StageView.ToolSlotList.ToolSlotItems)
+            foreach (var toolSlotItem in Globals.MainView.LevelView.ToolSlotList.ToolSlotItems)
             {
                 if (toolSlotItem.ToolType == type)
                 {

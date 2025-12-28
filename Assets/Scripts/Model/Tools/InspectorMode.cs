@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace SupplyChain.View
+namespace SupplyChain.Model
 {
-    public class InspectorMode : MonoBehaviour
+    public class InspectorMode : Tool
     {
     }
 }

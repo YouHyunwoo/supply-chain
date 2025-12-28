@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using SupplyChain.Enum;
 using UnityEngine;
 
 namespace SupplyChain.Model
@@ -5,7 +7,7 @@ namespace SupplyChain.Model
     public class MainSystem : MonoBehaviour
     {
         public Test Test;
-        public StageManager StageManager;
+        public GameManager GameManager;
         public ToolManager ToolManager;
         public Player Player;
         public UpgradeManager UpgradeManager;
@@ -15,25 +17,33 @@ namespace SupplyChain.Model
             Globals.MainSystem = this;
         }
 
-        private void Start()
+        private async UniTaskVoid Start()
         {
             // 게임 초기화: SetUp - 독립적인 행위
             Test.SetUp();
-            StageManager.SetUp();
+            GameManager.SetUp();
             ToolManager.SetUp();
             Player.SetUp();
             Globals.MainView.SetUp();
 
-            // 초기 세팅: 의존적 행위
-            StageManager.StartStage(0);
+            // 테스트: 바로 게임 시작
+            await StartGame();
         }
 
-        public void SellResourceCargo(int price)
+        // public async UniTask StartIntro()
+        // {
+            
+        // }
+
+        public async UniTask StartGame()
         {
-            var actualPrice = Mathf.RoundToInt(price * Player.EarningsMultiplier);
-            Player.Money += actualPrice;
-            Globals.MainSystem.StageManager.Region.AddEarnings(actualPrice);
-            Globals.MainView.StageView.SetMoney(Player.Money);
+            Globals.MainView.LockScreen();
+            await Globals.MainView.FadeOut();
+            GameManager.CreateGame();
+            GameManager.StartInitialLevel();
+            // Globals.MainView.ShowLevelView();
+            await Globals.MainView.FadeIn();
+            Globals.MainView.UnlockScreen();
         }
 
         public bool BuyTool(int toolIndex, int toolCost)
@@ -45,7 +55,7 @@ namespace SupplyChain.Model
             }
 
             Player.Money -= toolCost;
-            Globals.MainView.StageView.SetMoney(Player.Money);
+            Globals.MainView.LevelView.SetMoney(Player.Money);
             ToolManager.Unlock(toolIndex);
 
             Debug.Log("[Main] 도구 구매 완료: " + toolIndex + ", 남은 자금: " + Player.Money);

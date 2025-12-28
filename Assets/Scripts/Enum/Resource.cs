@@ -1,4 +1,4 @@
-namespace SupplyChain.Data
+namespace SupplyChain.Enum
 {
     public enum Resource
     {

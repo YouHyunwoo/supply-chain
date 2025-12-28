@@ -8,7 +8,7 @@ namespace SupplyChain.View.World
     {
         [SerializeField] private Transform _bodyTransform;
         [SerializeField] private SpriteRenderer _bodySpriteRenderer;
-        [SerializeField] private int regionId;
+        [SerializeField] private int levelId;
 
         public bool IsLocked;
 
@@ -33,8 +33,8 @@ namespace SupplyChain.View.World
             _bodyTransform.localPosition = new Vector3(_bodyTransform.localPosition.x, 0);
             _bodySpriteRenderer.color = Color.clear;
 
-            Debug.Log($"Region {regionId} selected.");
-            Globals.MainSystem.StageManager.StartStage(regionId);
+            Debug.Log($"Region {levelId} selected.");
+            Globals.MainSystem.GameManager.StartLevel(levelId);
         }
     }
 }

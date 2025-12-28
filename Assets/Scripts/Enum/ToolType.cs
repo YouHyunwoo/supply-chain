@@ -1,8 +1,11 @@
-public enum ToolType
+namespace SupplyChain.Enum
 {
-    None,
-    Transporter,
-    Inspector,
-    PathCreator,
-    Locator,
+    public enum ToolType
+    {
+        None,
+        Transporter,
+        Inspector,
+        PathCreator,
+        Locator,
+    }
 }

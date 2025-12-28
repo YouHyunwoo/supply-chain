@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class Cargo : MonoBehaviour
+namespace SupplyChain.View.World
 {
-    public Node Origin;
-    public float Value;
-    public float Amount;
+    public class Cargo : MonoBehaviour
+    {
+        public Node Origin;
+        public float Value;
+        public float Amount;
 
-    public virtual void StartTransport() { }
+        public virtual void StartTransport() { }
 
-    public virtual void CompleteTransport() { }
+        public virtual void CompleteTransport() { }
+    }
 }

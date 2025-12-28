@@ -1,4 +1,6 @@
-public class LinkNode : Node
+namespace SupplyChain.View.World
 {
-    
+    public class LinkNode : Node
+    {
+    }
 }

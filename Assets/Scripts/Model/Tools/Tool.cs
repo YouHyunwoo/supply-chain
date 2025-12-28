@@ -11,7 +11,6 @@ namespace SupplyChain.Model
 
         protected virtual void OnSelected()
         {
-            
         }
 
         public void Deselect()
@@ -21,7 +20,6 @@ namespace SupplyChain.Model
 
         protected virtual void OnDeselected()
         {
-            
         }
     }
 }

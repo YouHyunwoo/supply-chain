@@ -1,3 +1,4 @@
+using SupplyChain.View.World;
 using UnityEngine;
 
 namespace SupplyChain.Model
@@ -11,12 +12,12 @@ namespace SupplyChain.Model
             {
                 var mouseScreenPosition = Input.mousePosition;
                 var mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-                var mouseWorldLocation = Globals.MainSystem.StageManager.Region.ToLocation(mouseWorldPosition);
-                Globals.MainSystem.StageManager.Region.LocateNode(
-                    mouseWorldLocation,
-                    _processNodePrefab
-                );
-                Globals.MainSystem.ToolManager.Select(ToolType.Transporter);
+                var mouseWorldLocation = Globals.MainSystem.GameManager.Game.CurrentLevel.ToLocation(mouseWorldPosition);
+                // Globals.MainSystem.GameManager.Game.CurrentLevel.LocateNode(
+                //     mouseWorldLocation,
+                //     _processNodePrefab
+                // );
+                Globals.MainSystem.ToolManager.Select(Enum.ToolType.Transporter);
             }
         }
     }

@@ -1,24 +1,26 @@
-using SupplyChain.Model;
 using UnityEngine;
 
-public class MarketNode : Node
+namespace SupplyChain.View.World
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class MarketNode : Node
     {
-        var hasCargo = collision.TryGetComponent<Cargo>(out var cargo);
-        if (!hasCargo) return;
-
-        ReceiveCargo(cargo);
-    }
-
-    public override void ReceiveCargo(Cargo cargo)
-    {
-        var resourceCargo = cargo as ResourceCargo;
-        if (resourceCargo != null)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Debug.Log("MarketNode: Selling ResourceCargo with Price " + resourceCargo.Price);
-            Globals.MainSystem.SellResourceCargo(resourceCargo.Price);
-            resourceCargo.Dissolve();
+            var hasCargo = collision.TryGetComponent<Cargo>(out var cargo);
+            if (!hasCargo) return;
+
+            ReceiveCargo(cargo);
+        }
+
+        public override void ReceiveCargo(Cargo cargo)
+        {
+            var resourceCargo = cargo as ResourceCargo;
+            if (resourceCargo != null)
+            {
+                // Debug.Log("MarketNode: Selling ResourceCargo with Price " + resourceCargo.Price);
+                Globals.MainSystem.GameManager.SellCargo(resourceCargo.Price);
+                resourceCargo.Dissolve();
+            }
         }
     }
 }

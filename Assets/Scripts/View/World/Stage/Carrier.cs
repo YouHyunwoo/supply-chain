@@ -35,7 +35,7 @@ namespace SupplyChain.View.World
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (Globals.MainSystem.ToolManager.Type != ToolType.Transporter) return;
+            if (Globals.MainSystem.ToolManager.Type != Enum.ToolType.Transporter) return;
 
             var hasResourceCargo = collision.TryGetComponent<ResourceCargo>(out var resourceCargo);
             if (!hasResourceCargo) return;
